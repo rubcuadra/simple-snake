@@ -132,10 +132,10 @@ function draw()
 	snake.mover(); 		//Calcula sus coordenadas
 	snake.pintar();		//Pone la vibora en las coordenadas que le corresponden
 
-	if (comida.length == 0) 	//SI no hay comida
-		crearComida();  //Hara que deje de ser un arreglo vacio
+	//if (comida.length == 0) 	//SI no hay comida
+	//	crearComida();  //Hara que deje de ser un arreglo vacio
 	
-	pintarComida();
+	//pintarComida();
 	//setTimeout(draw, 1000); //Esto hara que se pinte cada 1.000 segundos
 }
 
