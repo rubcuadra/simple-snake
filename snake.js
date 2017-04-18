@@ -1,7 +1,8 @@
 //Variables globales
 var table = document.getElementById("snakeT");
 var tSize = 20;
-
+//Nos dara la celda en posicion (3,1)
+//table.rows[ 1 ].cells[ 3 ].className = "snake" 
 var comida = [];
 
 function crearTabla(size)
