@@ -1,7 +1,18 @@
-.empty {
-	/*background-color: lightblue;
-	color: black;*/
+#snakeT {
+	width: 100%;
+	background-color: #995010;
+	border-collapse: collapse;
 }
 
-/*TABLE DEBE TENER ESTA PROPIEDAD
-style="width:100%"*/
+.snake {
+	background-color: green;
+}
+
+.empty{
+	height: 15px
+}
+
+.comida{
+	
+	background-color: white;
+}

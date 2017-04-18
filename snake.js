@@ -2,6 +2,8 @@
 var table = document.getElementById("snakeT");
 var tSize = 20;
 
+var comida = [];
+
 function crearTabla(size)
 {
 	for (var i = 0; i < size; i++) 
@@ -55,6 +57,7 @@ snake = {
 			if ( hayComida(new_x,new_y) ) 
 			{
 				this.pos.unshift( [new_x,new_y] ); //Agregamos la cabeza y no borramos la ultima posicion
+				comida = [];
 			}
 			else
 			{
@@ -78,7 +81,7 @@ snake = {
 		{
 			var currentPos = this.pos[i]; 
 			//Es un arreglo de dos posiciones, donde el elemento 0 es X y el elmento 1 es Y
-			table.rows[ currentPos[1] ].cells[ currentPos[0] ].innerHTML = "-"; 
+			//table.rows[ currentPos[1] ].cells[ currentPos[0] ].innerHTML = "-"; 
 			//Probablemente lo mejor sea en lugar de usar un innerHTML mejor ponemos la clase Cuerpo y que un css se encargue de pintarlo
 			table.rows[ currentPos[1] ].cells[ currentPos[0] ].className = "snake" 
 		}
@@ -128,6 +131,11 @@ function draw()
 	resetBoard();		//Pone el tablero en Xs
 	snake.mover(); 		//Calcula sus coordenadas
 	snake.pintar();		//Pone la vibora en las coordenadas que le corresponden
+
+	if (comida.length == 0) 	//SI no hay comida
+		crearComida();  //Hara que deje de ser un arreglo vacio
+	
+	pintarComida();
 	//setTimeout(draw, 1000); //Esto hara que se pinte cada 1.000 segundos
 }
 
@@ -137,11 +145,30 @@ function resetBoard() //Pondra todas las celdas en x
 	{
 		for (var j = 0; j < tSize; j++) 
 		{
-			table.rows[ i ].cells[ j ].innerHTML = "x";
+			//table.rows[ i ].cells[ j ].innerHTML = "";
 			table.rows[ i ].cells[ j ].className = "empty";
 			//TODO Podriamos cambiar para que sean por colores en lugar de x... 
 		}		
 	}
+}
+
+function pintarComida()
+{
+	table.rows[ comida[1] ].cells[ comida[0] ].className = "comida";
+}
+
+//NO JALA
+function crearComida() //Agarra un empty y guarda su coordenada
+{
+	var empty_spaces = document.getElementsByClassName( "empty" );
+	
+	var index = Math.floor(Math.random()*empty_spaces.length); //Obtener indice aleatoriamente
+	var celd_comida = empty_spaces[ index ];	 //Obtener una celda aleatoria para poner comida
+	
+	console.log(celd_comida.parentNode);
+
+	comida[0] = celd_comida.cellIndex; //Comida es una variable global 
+	comida[1] = celda_y; //Que incluye coordenadas
 }
 
 function hayComida(x,y)
