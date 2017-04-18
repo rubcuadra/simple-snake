@@ -170,7 +170,7 @@ function crearComida() //Agarra un empty y guarda su coordenada
 	comida[0] = celd_comida.cellIndex; //Comida es una variable global 
 	comida[1] = celda_y; //Que incluye coordenadas
 }
-
+//Prueba
 function hayComida(x,y)
 {
 	//TODO IMPLEMENTAR COMIDA
